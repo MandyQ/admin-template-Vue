@@ -1,19 +1,27 @@
 <template>
-<div id="navbar_wrapper">
-  <Hamburger />
-  <Breadcrumb />
+  <div id="navbar_wrapper">
+    <Hamburger :toggleClick="toggleSidebar" :isActive="sidebar.opened"/>
+    <Breadcrumb />
 
 
-</div>
+  </div>
 
 </template>
 
 <script>
+
 import Hamburger from '@/components/Hamburger';
 import Breadcrumb from '@/components/Breadcrumb';
 
 export default {
-  components:{ Hamburger, Breadcrumb }
+  components:{ Hamburger, Breadcrumb },
+
+  methods: {
+    toggleSidebar() {
+      this.$store.dispatch('toggleSidebar')
+    }
+  }
+
 
 }
 </script>

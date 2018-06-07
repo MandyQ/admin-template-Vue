@@ -11,3 +11,9 @@ html, body {
 .el-menu-item.is-active {
   color: #ff6600;
 }
+
+a {
+  text-decoration: none;
+  /* color:white; */
+
+}

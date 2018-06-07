@@ -1,5 +1,5 @@
 <template>
-<div>
+<!-- <div>
   <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
     <el-radio-button :label="false">展开</el-radio-button>
     <el-radio-button :label="true">收起</el-radio-button>
@@ -41,22 +41,75 @@
       <span slot="title">导航四</span>
     </el-menu-item>
   </el-menu>
-</div>
+</div> -->
 
+<div>
+<el-menu
+  :default-active="activeIndex2"
+  class="el-menu-demo"
+  mode="vertical"
+  @select="handleSelect"
+  :collapse="isCollapse"
+  background-color="#545c64"
+  text-color="#fff"
+  active-text-color="#ff6600">
+  <el-menu-item index="1">处理中心</el-menu-item>
+  <el-submenu index="2">
+    <template slot="title">我的工作台</template>
+    <el-menu-item index="2-1">选项1</el-menu-item>
+    <el-menu-item index="2-2">选项2</el-menu-item>
+    <el-menu-item index="2-3">选项3</el-menu-item>
+    <el-submenu index="2-4">
+      <template slot="title">选项4</template>
+      <el-menu-item index="2-4-1">选项1</el-menu-item>
+      <el-menu-item index="2-4-2">选项2</el-menu-item>
+      <el-menu-item index="2-4-3">选项3</el-menu-item>
+    </el-submenu>
+  </el-submenu>
+  <el-menu-item index="3" disabled>消息中心</el-menu-item>
+  <el-menu-item index="4">订单管理</el-menu-item>
+</el-menu>
+</div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-   data() {
+    // data() {
+    //   return{
+    //     isCollapse:true
+    //   }
+    // },
+    // mounted() {
+    //   this.isCollapse()
+    // },
+    // methods: {
+    //   handleOpen(key, keyPath) {
+    //     console.log(key, keyPath);
+    //   },
+    //   handleClose(key, keyPath) {
+    //     console.log(key, keyPath);
+    //   },
+      // isCollapse() {
+      //   return !this.state.opened
+      // }
+    // }
+    data() {
       return {
-        isCollapse: true
+        activeIndex: '1',
+        activeIndex2: '1',
+        // isCollapse: true
       };
     },
+    computed: {
+      ...mapGetters(['sidebar']),
+      isCollapse() {
+        return !this.sidebar.opened
+      }
+
+    },
     methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
+      handleSelect(key, keyPath) {
         console.log(key, keyPath);
       }
     }
