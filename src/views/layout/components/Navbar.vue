@@ -1,6 +1,6 @@
 <template>
   <div id="navbar_wrapper">
-    <Hamburger :toggleClick="toggleSidebar" :isActive="sidebar.opened"/>
+    <Hamburger :toggleClick="toggleSidebar" />
     <Breadcrumb />
 
 

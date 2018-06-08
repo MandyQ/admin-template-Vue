@@ -53,21 +53,18 @@
   background-color="#545c64"
   text-color="#fff"
   active-text-color="#ff6600">
-  <el-menu-item index="1">处理中心</el-menu-item>
-  <el-submenu index="2">
-    <template slot="title">我的工作台</template>
-    <el-menu-item index="2-1">选项1</el-menu-item>
-    <el-menu-item index="2-2">选项2</el-menu-item>
-    <el-menu-item index="2-3">选项3</el-menu-item>
-    <el-submenu index="2-4">
+
+  <el-submenu index="1">
+    <template slot="title">Example</template>
+    <el-menu-item index="1-1">Table</el-menu-item>
+    <el-menu-item index="1-2">Tree</el-menu-item>
+    <!-- <el-submenu index="1-3">
       <template slot="title">选项4</template>
       <el-menu-item index="2-4-1">选项1</el-menu-item>
-      <el-menu-item index="2-4-2">选项2</el-menu-item>
-      <el-menu-item index="2-4-3">选项3</el-menu-item>
-    </el-submenu>
+    </el-submenu> -->
   </el-submenu>
-  <el-menu-item index="3" disabled>消息中心</el-menu-item>
-  <el-menu-item index="4">订单管理</el-menu-item>
+  <!-- <el-menu-item index="3" disabled>消息中心</el-menu-item> -->
+  <el-menu-item index="4">Form</el-menu-item>
 </el-menu>
 </div>
 </template>
@@ -102,6 +99,7 @@ export default {
       };
     },
     computed: {
+      //使用对象展开将getter混入 computed对象中 若想给getter取另一个名字，使用对象形式
       ...mapGetters(['sidebar']),
       isCollapse() {
         return !this.sidebar.opened

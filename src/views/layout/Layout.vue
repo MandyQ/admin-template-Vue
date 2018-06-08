@@ -7,7 +7,9 @@
       <el-header>
         <Navbar />
       </el-header>
-      <el-main>Main</el-main>
+      <el-main>
+        <Appmain />
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -15,8 +17,9 @@
 <script>
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
+import Appmain from './components/Appmain';
 export default {
-  components:{ Sidebar, Navbar }
+  components:{ Sidebar, Navbar, Appmain }
 
 };
 </script>
