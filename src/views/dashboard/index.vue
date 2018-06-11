@@ -1,7 +1,7 @@
 <template>
 <div class="dashboard_wrapper">
-  <div>name:{admin}</div>
-  <div>roles:{admin}</div>
+  <div>name:{{name}}</div>
+  <div>roles:{{roles}}</div>
 
 
 </div>

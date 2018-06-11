@@ -14,6 +14,16 @@
 <script>
 
 export default {
+  data() {
+    return {
+      // crumblist:[]
+    }
+  },
+  methods: {
+    // getBreadcrumb() {}
+
+  }
+
 
 
 
