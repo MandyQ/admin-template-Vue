@@ -20,28 +20,35 @@ export const constantRouterMap = [
     path: '/',
     component: Layout,
     redirect:'/dashboard',
-    name:'Dashboard', //显示在面包屑导航的名称
+    name:'Dashboard', //显示在面包屑导航的名称 (用于keep-alive & router-view缓存)
     // hidden：true,
+    meta: {title: 'Dashboard'},
     children:[  //嵌套路由(array)
       {
         path:'dashboard',
-        component:Dashboard
+        component:Dashboard,
+        // meta: {title: 'Dashboard'}
       }
     ]
   },
   {
     path:'/example',
     component:Layout,
-     redirect:'/example/table',
-    name:'Table',
+    redirect:'/example/table',
+    name:'Example',
+    meta: {title: 'Example'},
     children:[
       {
         path:'table',
         component: Table,
+        name:'Table',
+        meta: {title: 'Table'}
       },
       {
         path:'tree',
-        component: Tree
+        component: Tree,
+        name:'Tree',
+        meta: {title: 'Tree'}
       }
     ]
   },
@@ -51,7 +58,9 @@ export const constantRouterMap = [
     children: [
       {
         path: 'index',
-        component:Form
+        component:Form,
+        name:'Form',
+        meta: {title: 'Form'}
       }
     ]
   }
