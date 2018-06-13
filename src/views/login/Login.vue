@@ -1,18 +1,19 @@
 <template>
   <div id="login_box">
-    <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+      <h3>vue-admin</h3>
       <el-form-item label="用户名" prop="username">
-        <el-input type="username" v-model="ruleForm2.username" auto-complete="off"></el-input>
+        <el-input type="username" v-model="ruleForm.username" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="pass">
-        <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
+        <el-input type="password" v-model="ruleForm.pass" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item label="确认密码" prop="checkPass">
-        <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
+        <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
-        <el-button @click="resetForm('ruleForm2')">重置</el-button>
+        <el-button type="primary" @click.native.prevent="checkLogin">提交</el-button>
+        <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -32,8 +33,8 @@
         if (value === '') {
           callback(new Error('请输入密码'));
         } else {
-          if (this.ruleForm2.checkPass !== '') {
-            this.$refs.ruleForm2.validateField('checkPass');
+          if (this.ruleForm.checkPass !== '') {
+            this.$refs.ruleForm.validateField('checkPass');
           }
           callback();
         }
@@ -41,34 +42,35 @@
       var validatePass2 = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请再次输入密码'));
-        } else if (value !== this.ruleForm2.pass) {
+        } else if (value !== this.ruleForm.pass) {
           callback(new Error('两次输入密码不一致!'));
         } else {
           callback();
         }
       };
       return {
-        ruleForm2: {
-          username: '',
-          pass: '',
-          checkPass:''
+        ruleForm: {
+          username: 'admin',
+          pass: 'admin',
+          checkPass:'admin'
         },
-        rules2: {
+        rules: {
           username: [
-            { validator: checkName, trigger: 'blur' }
+            { required: true, validator: checkName, trigger: 'blur' }
           ],
           pass: [
-            { validator: validatePass, trigger: 'blur' }
+            { required: true, validator: validatePass, trigger: 'blur' }
           ],
           checkPass: [
-            { validator: validatePass2, trigger: 'blur' }
+            { required: true, validator: validatePass2, trigger: 'blur' }
           ],
         }
       };
     },
     methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+      checkLogin() {
+        // console.log(this.$refs.ruleForm)
+        this.$refs.ruleForm.validate((valid) => {
           if (valid) {
             alert('submit!');
           } else {
@@ -77,8 +79,8 @@
           }
         });
       },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
+      resetForm() {
+        this.$refs.loginForm.resetFields();
       }
     }
   }
@@ -87,6 +89,9 @@
 </script>
 
 <style>
+h3{
+  text-align: center;
+}
   #login_box{
     width: 50%;
     position:absolute;

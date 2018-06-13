@@ -23,7 +23,8 @@ export default {
       crumblist:[]
     }
   },
-
+// 使用路由参数时 原来的组件会被复用，意味着组件生命周期钩子函数不会被调用
+//复用组件时，想对路由参数变化做出响应的话，用watch（监测变化）$route对象 或者引入beforeRouteUpdate守卫
   watch: {
     $route() {
       this.getBreadcrumb()
