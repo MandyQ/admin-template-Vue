@@ -12,7 +12,7 @@
         <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click.native.prevent="checkLogin">提交</el-button>
+        <el-button type="primary" :loading="loading" @click.native.prevent="checkLogin">提交</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
@@ -72,7 +72,10 @@
         // console.log(this.$refs.ruleForm)
         this.$refs.ruleForm.validate((valid) => {
           if (valid) {
-            alert('submit!');
+            this.$http.post('/login')
+            .then(function(res) {
+              console.log(res)
+            })
           } else {
             console.log('error submit!!');
             return false;

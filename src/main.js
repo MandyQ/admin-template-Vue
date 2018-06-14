@@ -7,6 +7,12 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI)
 
+// 导入axios
+// import axios from 'axios';
+// axios.defaults.baseURL = BASE_URL;
+//把axios添加到vue的原型上
+// Vue.prototype.$http = axios;
+
 import 'normalize.css/normalize.css';
 import '@/static/styles/index.css';
 
