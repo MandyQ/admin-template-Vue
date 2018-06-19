@@ -3,10 +3,10 @@
     <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <h3>vue-admin</h3>
       <el-form-item label="用户名" prop="username">
-        <el-input type="username" v-model="ruleForm.username" auto-complete="off"></el-input>
+        <el-input name="username" type="text" v-model="ruleForm.username" auto-complete="off"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="pass">
-        <el-input type="password" v-model="ruleForm.pass" auto-complete="off"></el-input>
+      <el-form-item label="密码" prop="password">
+        <el-input name="password" type="password" v-model="ruleForm.pass" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item label="确认密码" prop="checkPass">
         <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off"></el-input>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
   export default {
      data() {
       var checkName = (rule, value, callback) => {
@@ -49,16 +50,18 @@
         }
       };
       return {
+        loading:false,
+
         ruleForm: {
           username: 'admin',
-          pass: 'admin',
-          checkPass:'admin'
+          password: 'admin',
+          checkPass:'admin',
         },
         rules: {
           username: [
             { required: true, validator: checkName, trigger: 'blur' }
           ],
-          pass: [
+          password: [
             { required: true, validator: validatePass, trigger: 'blur' }
           ],
           checkPass: [
@@ -72,10 +75,16 @@
         // console.log(this.$refs.ruleForm)
         this.$refs.ruleForm.validate((valid) => {
           if (valid) {
-            this.$http.post('/login')
-            .then(function(res) {
-              console.log(res)
-            })
+            this.loading=true
+            console.log('--------------')
+            this.$store.dispatch('Login', this.ruleForm).then( ()=> {
+              console.log(this.ruleForm)
+              this.loading=false
+              console.log(111)
+              this.$router.push({path:'/'})
+           }).catch( ()=>{  //发生错误时的回调
+             this.loading = false
+           })
           } else {
             console.log('error submit!!');
             return false;
