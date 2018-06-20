@@ -9,6 +9,7 @@ import Dashboard from '@/views/dashboard';
 import Table from '@/views/table';
 import Tree from '@/views/tree';
 import Form from '@/views/form';
+import Errpage from '@/views/404'
 
 
 
@@ -17,6 +18,10 @@ import Form from '@/views/form';
 // 如首页和登录页和一些不用权限的公用页面
 export const constantRouterMap = [
   {path:'/login',component: Login},
+  {path:'/404', component: Errpage},
+
+  {path:'*', redirect:'/404'},
+
   {
     path: '/',
     component: Layout,
@@ -64,7 +69,10 @@ export const constantRouterMap = [
         meta: {title: 'Form'}
       }
     ]
-  }
+  },
+
+
+
 
 ]
 

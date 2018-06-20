@@ -42,7 +42,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #navbar_wrapper {
   position: relative;
 }

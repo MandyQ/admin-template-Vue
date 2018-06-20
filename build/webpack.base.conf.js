@@ -52,8 +52,17 @@ module.exports = {
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: [resolve('src/icons')], //该loader只解析该路径下的文件（svg）
+        options: {
+          symbolId: 'icon-[name]'
+        }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,  //vue-cli默认用url-loader解析svg文件
         loader: 'url-loader',
+        exclude: [resolve('src/icons')],  //不用url-loader解析改路径下的文件（svg）
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
