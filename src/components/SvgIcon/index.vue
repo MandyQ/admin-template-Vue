@@ -11,9 +11,13 @@ export default {
     iconName() {
       return `#icon-${this.iconClass}`
     },
-    // svgClass() {
-    //   if()
-    // }
+    svgClass() {
+      if(this.className) {
+        return 'svg-icon' + this.iconClass
+      }else {
+        return 'svg-icon'
+      }
+    }
 
 
   }

@@ -3,15 +3,21 @@
     <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <h3>vue-admin</h3>
       <el-form-item label="用户名" prop="username">
-        <span>
+        <span class="icon_box">
           <svg-icon icon-class="user"/>
         </span>
         <el-input name="username" type="text" v-model="ruleForm.username" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
+        <span>
+          <svg-icon icon-class="password"/>
+        </span>
         <el-input name="password" type="password" v-model="ruleForm.password" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item label="确认密码" prop="checkPass">
+        <span>
+          <svg-icon icon-class="check-pass" />
+        </span>
         <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item>
@@ -107,11 +113,19 @@ h3{
   text-align: center;
 }
   #login_box{
-    width: 50%;
+    width: 30%;
     position:absolute;
-    left: 50%;
+    left: 45%;
     top: 50%;
     transform: translate(-50%, -50%)
   }
 
+.icon_box {
+  /* display: inline-block; */
+  vertical-align: middle;
+  width: 30px;
+}
+.el-input{
+  float: right;
+}
 </style>

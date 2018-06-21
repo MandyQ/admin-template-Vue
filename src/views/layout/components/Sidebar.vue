@@ -1,44 +1,29 @@
 
 <template>
+  <div>
+    <el-menu
+      :default-active="activeIndex"
+      class="el-menu-demo"
+      mode="vertical"
+      @select="handleSelect"
+      :collapse="isCollapse"
+      :router="true"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ff6600">
 
-<div>
-  <el-menu
-    :default-active="activeIndex"
-    class="el-menu-demo"
-    mode="vertical"
-    @select="handleSelect"
-    :collapse="isCollapse"
-    :router="true"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ff6600">
+      <SidebarItem :routes="routes"></SidebarItem>
 
-    <el-submenu index="1">
-      <template slot="title">Example</template>
-      <!-- <router-link to="/example/table"> -->
-        <el-menu-item index="/example/table">Table</el-menu-item>
-      <!-- </router-link> -->
-
-      <!-- <router-link to="/example/tree"> -->
-        <el-menu-item index="/example/tree">Tree</el-menu-item>
-      <!-- </router-link> -->
-    </el-submenu>
-
-    <!-- <router-link to="/form/index"> -->
-      <el-menu-item index="/form/index" >Form</el-menu-item>
-    <!-- </router-link> -->
-
-
-
-
-
-  </el-menu>
-</div>
+    </el-menu>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { SidebarItem } from './SidebarItem'
+
 export default {
+  components: { SidebarItem },
 
     data() {
       return {
@@ -52,6 +37,9 @@ export default {
       ...mapGetters(['sidebar']),
       isCollapse() {
         return !this.sidebar.opened
+      },
+      routes() {
+        return this.$router.options.routes
       }
 
     },
@@ -78,6 +66,14 @@ export default {
     width: 200px;
     min-height: 400px;
 }
+.el-menu--collapse>.el-submenu>.el-submenu__title span {
+  width:auto;
+  height: auto;
+  visibility: visible;
+
+
+}
+
 
 
 </style>

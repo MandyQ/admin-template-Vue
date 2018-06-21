@@ -9,7 +9,7 @@ import Dashboard from '@/views/dashboard';
 import Table from '@/views/table';
 import Tree from '@/views/tree';
 import Form from '@/views/form';
-import Errpage from '@/views/404'
+import Errpage from '@/views/404';
 
 
 
@@ -32,6 +32,7 @@ export const constantRouterMap = [
     children:[  //嵌套路由(array)
       {
         path:'dashboard',
+        name:'Dashboard',
         component:Dashboard,
         // meta: {title: 'Dashboard'}
       }
