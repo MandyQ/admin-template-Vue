@@ -12,7 +12,7 @@
       text-color="#fff"
       active-text-color="#ff6600">
 
-      <SidebarItem :routes="routes"></SidebarItem>
+      <Sidebaritem :routes="routes" />
 
     </el-menu>
   </div>
@@ -20,10 +20,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { SidebarItem } from './SidebarItem'
+import  Sidebaritem  from '@/views/layout/components/Sidebaritem.vue'
 
 export default {
-  components: { SidebarItem },
+  components: { Sidebaritem },
 
     data() {
       return {
@@ -39,6 +39,7 @@ export default {
         return !this.sidebar.opened
       },
       routes() {
+        // console.log(this.$router.options.routes)
         return this.$router.options.routes
       }
 
