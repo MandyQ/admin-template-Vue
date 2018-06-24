@@ -1,52 +1,72 @@
 <template>
   <div>
-    <!-- <ul>
-      <li v-for="item in routes">
-        11
-        {{item.meta}}
-      </li>
-    </ul> -->
-    <el-submenu index="1" v-for="item in routes" :key="item.name" v-if="item.children">
-      <template slot="title">
-        <!-- <svg-icon :icon-class="item.meta.icon" /> -->
-        <span class="options_title">{{item.meta.title}}</span>
-      </template>
+    <!-- <el-submenu index="" v-for="item in routesArr" :key="item.name" v-if="item.meta">
+        <template slot="title">
+          <svg-icon :icon-class="item.meta.icon" />
+          <span class="options_title">{{item.meta.title}}</span>
+        </template>
 
-      <!-- <el-menu-item :index=`/${item.meta.title}/${item.children.name}` v-for= "item in children" :key="item.children.name">
-        <svg-icon :icon-class=item.meta.title />
-        <span class="options_title" index="`/${item.meta.title}/${item.children.name}`">{{item.children.name}}</span>
-      </el-menu-item> -->
+        <el-menu-item index="" v-for= "secItem in item.children" :key="secItem.name" v-if="item.children && item.children.length>1">
+          <svg-icon :icon-class="secItem.meta.icon"/>
+          <span class="options_title" >{{secItem.meta.title}}</span>
+        </el-menu-item>
+      </el-submenu> -->
 
-      <!-- <el-menu-item index="/example/tree">
-        <svg-icon icon-class="example" />
-        <span class="options_title">Example</span>
-      </el-menu-item> -->
 
-    </el-submenu>
+      <!-- template是ul , el-submenu是li el-menu-item-group是li里面的ul el-menu-item是li-->
 
-    <!-- <router-link to="/form/index"> -->
-    <!-- <el-menu-item index="/form/index" >Form</el-menu-item> -->
-    <!-- </router-link> -->
+
+
+    <template v-for="item in routesArr" v-if="item.children">
+      <router-link v-if="item.children.length===1" :key="item.children[0].name" :to="item.path+'/'+item.children[0].path">
+        <el-menu-item index="item.path+'/'+item.children[0].path">
+          <svg-icon :icon-class="item.meta.icon"/>
+          <span class="options_title" >{{item.meta.title}}</span>
+        </el-menu-item>
+      </router-link>
+
+      <el-submenu v-else  :index="item.path" :key="item.name">
+        <template slot="title">
+          <svg-icon :icon-class="item.meta.icon" />
+          <span class="options_title">{{item.meta.title}}</span>
+        </template>
+
+        <template v-for="secItem in item.children">
+          <router-link :to="item.path + '/' + secItem.path" :key="secItem.name">
+            <el-menu-item index="item.path+'/'+secItem.path"  :key="secItem.name" v-if="item.children && item.children.length>1">
+              <svg-icon :icon-class="secItem.meta.icon"/>
+              <span class="options_title" >{{secItem.meta.title}}</span>
+            </el-menu-item>
+          </router-link>
+        </template>
+
+
+
+
+      </el-submenu>
+
+
+
+    </template>
+
+
   </div>
 </template>
 
 <script>
 export default {
-
-  mounted() {
-    // console.log(this.routes)
-    // console.log(item.name)
-    console.log(this.routes[1])
-    // console.log(this.item.meta)
-
-  },
+  name: "Sidebaritem",
+  props:['routes'],
   data() {
     return {
-      routes = this.routes
+      routesArr:[]
     }
   },
-  name: "Sidebaritem",
-  props:['routes']
+  created() {
+    this.routesArr = this.routes // 用来接收父组件传过来的数据（props传过来的数据不能直接拿来用 不会同步到view层 why ??）
+    console.log(this.routesArr)
+
+  }
 
 
 }
