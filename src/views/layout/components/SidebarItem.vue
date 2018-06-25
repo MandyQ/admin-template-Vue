@@ -6,7 +6,7 @@
         {{item.meta}}
       </li>
     </ul> -->
-    <el-submenu index="1" v-for="item in routes" :key="item.name" v-if="item.children">
+    <el-submenu index="1" v-for="item in routesArr" :key="item.name" v-if="item.children">
       <template slot="title">
         <!-- <svg-icon :icon-class="item.meta.icon" /> -->
         <span class="options_title">{{item.meta.title}}</span>
@@ -40,13 +40,14 @@ export default {
     // console.log(this.item.meta)
 
   },
+
+  name: "Sidebaritem",
+  props:['routes'],
   data() {
     return {
-      routes = this.routes
+      routesArr : this.routes
     }
   },
-  name: "Sidebaritem",
-  props:['routes']
 
 
 }
