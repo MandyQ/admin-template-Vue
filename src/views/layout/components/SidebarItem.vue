@@ -20,7 +20,7 @@
 
         <template v-for="secItem in item.children">
           <router-link :to="item.path + '/' + secItem.path" :key="secItem.name">
-            <el-menu-item index="item.path+'/'+secItem.path"  :key="secItem.name" v-if="item.children && item.children.length>1" v-on:click=getIndex >
+            <el-menu-item index="item.path+'/'+secItem.path"  :key="secItem.name" v-if="item.children && item.children.length>1">
               <svg-icon :icon-class="secItem.meta.icon"/>
               <span class="options_title" >{{secItem.meta.title}}</span>
             </el-menu-item>
@@ -38,24 +38,15 @@ export default {
   props:['routes'],
   data() {
     return {
-      routesArr:[],
-      // index:1
+      routesArr:[] //事先定义好空数组，用来接收父组件传递过来的数据
     }
   },
-  methods: {
-    getIndex(index) {
-      // console.log(index)
-      console.log(1111)
-    }
-  },
+
   created() {
     this.routesArr = this.routes // 用来接收父组件传过来的数据（props传过来的数据不能直接拿来用 不会同步到view层 why ??）
-
     console.log(this.routesArr)
   },
-  mounted() {
-    this.getIndex()
-  }
+
 
 
 }

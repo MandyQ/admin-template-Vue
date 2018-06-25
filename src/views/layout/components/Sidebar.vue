@@ -46,11 +46,6 @@ export default {
       console.log(key, keyPath);
     },
   },
-  // watch: {
-  //   $route() {
-  //     this.handleSelect()
-  //   }
-  // }
 
   }
 
