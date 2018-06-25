@@ -2,11 +2,11 @@
 <template>
   <div>
     <el-menu
-      :default-active="activeIndex"
+      :default-active="$route.path"
       class="el-menu-demo"
       mode="vertical"
       @select="handleSelect"
-      :collapse="isCollapse"
+
       :router="true"
       background-color="#545c64"
       text-color="#fff"
@@ -24,36 +24,34 @@ import  Sidebaritem  from '@/views/layout/components/Sidebaritem.vue'
 
 export default {
   components: { Sidebaritem },
-
-    data() {
-      return {
-        activeIndex: '1',
-        // isCollapse: true,
-
-      };
+  data() {
+    return {
+      // activeIndex: '1',
+      // isCollapse: true, //二级导航hover展开还是点击展开
+    };
+  },
+  computed: {
+    //使用对象展开将getter混入 computed对象中 若想给getter取另一个名字，使用对象形式
+    ...mapGetters(['sidebar']),
+    // isCollapse() {
+    //   return !this.sidebar.opened
+    // },
+    routes() {
+      // console.log(this.$router.options.routes)
+      return this.$router.options.routes
+    }
+  },
+  methods: {
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
     },
-    computed: {
-      //使用对象展开将getter混入 computed对象中 若想给getter取另一个名字，使用对象形式
-      ...mapGetters(['sidebar']),
-      isCollapse() {
-        return !this.sidebar.opened
-      },
-      routes() {
-        // console.log(this.$router.options.routes)
-        return this.$router.options.routes
-      }
+  },
+  // watch: {
+  //   $route() {
+  //     this.handleSelect()
+  //   }
+  // }
 
-    },
-    methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      // onMenuChange(page, fromHook)
-    },
-    // beforeUpdate: function() {
-    //   return this.activeIndex = this.$route.matched[1].path
-
-    // }
   }
 
 </script>
