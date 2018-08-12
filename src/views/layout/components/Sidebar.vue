@@ -1,20 +1,24 @@
 
 <template>
   <div>
-    <el-menu
+    <el-scrollbar>
+       <el-menu
       :default-active="$route.path"
       class="el-menu-demo"
       mode="vertical"
+      :show-timeout="200"
+      :collapse="isCollapse"
       @select="handleSelect"
-
       :router="true"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ff6600">
-
       <Sidebaritem :routes="routes" />
-
     </el-menu>
+
+    </el-scrollbar>
+
+
   </div>
 </template>
 
@@ -33,9 +37,9 @@ export default {
   computed: {
     //使用对象展开将getter混入 computed对象中 若想给getter取另一个名字，使用对象形式
     ...mapGetters(['sidebar']),
-    // isCollapse() {
-    //   return !this.sidebar.opened
-    // },
+    isCollapse() {
+      return !this.sidebar.opened
+    },
     routes() {
       // console.log(this.$router.options.routes)
       return this.$router.options.routes

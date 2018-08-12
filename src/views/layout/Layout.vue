@@ -1,17 +1,23 @@
 <template>
-  <el-container>
-    <el-aside width="200px">
-      <Sidebar />
-    </el-aside>
+  <div class="app-wrapper" >
+    <div v-if="device==='mobile'&&Sidebar.opened" class="mask-bg" @click="clickOutside"></div>
     <el-container>
-      <el-header>
-        <Navbar />
-      </el-header>
-      <el-main>
-        <Appmain />
-      </el-main>
+      <el-aside width="200px">
+        <Sidebar />
+      </el-aside>
+      <el-container>
+        <el-header>
+          <Navbar />
+        </el-header>
+        <el-main>
+          <Appmain />
+        </el-main>
+      </el-container>
     </el-container>
-  </el-container>
+
+  </div>
+
+
 </template>
 
 <script>
@@ -24,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   .el-container {
     height: 100%;
   }
@@ -56,6 +62,16 @@ export default {
 
   body > .el-container {
     /* margin-bottom: 40px; */
+  }
+
+  .mask-bg{
+    background: #000;
+    opacity:0.3;
+    width:100%;
+    height:100%;
+    top:0;
+    position: absolute;
+    z-index:999;
   }
 
 </style>
