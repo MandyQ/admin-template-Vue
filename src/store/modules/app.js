@@ -1,9 +1,10 @@
+/* eslint-disable */
 import Cookies from 'js-cookie'
 
 const app = {
   state: {
     sidebar: {
-      open: !+Cookies.get('sidebarStatus'),
+      opened: !+Cookies.get('sidebarStatus'),
       withoutAnimation:false
     },
     device:'desktop'
