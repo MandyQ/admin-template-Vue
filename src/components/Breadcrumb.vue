@@ -1,14 +1,23 @@
 <template>
-  <div id="breadcrumb_wrapper">
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-
-      <el-breadcrumb-item v-for="(item, index) in crumblist" :key="item.path" v-if="item.meta.title">
+  <!-- <div id="breadcrumb_wrapper">
+    <el-breadcrumb  class="app-breadcrumb" separator-class="el-icon-arrow-right">
+      <transition-group name="breadcrumb">
+         <el-breadcrumb-item v-for="(item, index) in crumblist" :key="item.path" v-if="item.meta.title">
         <span v-if="item.redirect==='noredirect'|| index==crumblist.length-1" class="no-redirect">{{item.meta.title}}</span>
         <router-link v-else :to="item.redirect || item.path">{{item.meta.title}}</router-link>
       </el-breadcrumb-item>
-
+      </transition-group>
     </el-breadcrumb>
-  </div>
+  </div> -->
+
+  <el-breadcrumb class="app-breadcrumb" separator="/">
+    <transition-group name="breadcrumb">
+      <el-breadcrumb-item v-for="(item,index)  in levelList" :key="item.path" v-if="item.meta.title">
+        <span v-if="item.redirect==='noredirect'||index==levelList.length-1" class="no-redirect">{{item.meta.title}}</span>
+        <router-link v-else :to="item.redirect||item.path">{{item.meta.title}}</router-link>
+      </el-breadcrumb-item>
+    </transition-group>
+  </el-breadcrumb>
 
 </template>
 
@@ -20,7 +29,7 @@ export default {
   },
   data() {
     return {
-      crumblist:[]
+      levelList:[]
     }
   },
 // 使用路由参数时 原来的组件会被复用，意味着组件生命周期钩子函数不会被调用
@@ -37,7 +46,7 @@ export default {
       if(first&&first.name !== 'Dashboard'){
         matched = [{path: '/dashboard', meta: {title: 'Dashboard'}}].concat(matched)
       }
-      this.crumblist = matched
+      this.levelList = matched
     }
 
   }
@@ -48,10 +57,17 @@ export default {
 }
 </script>
 
-<style>
-#breadcrumb_wrapper {
-  margin-left: 35px;
-}
+<style lang="scss" scoped>
+ .app-breadcrumb.el-breadcrumb {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 50px;
+    margin-left: 10px;
+    .no-redirect {
+      color: #97a8be;
+      cursor: text;
+    }
+  }
 
 
 </style>

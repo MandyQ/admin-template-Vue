@@ -1,6 +1,6 @@
 <template>
-<section>
-  <transition name="fade" mode="in-out">
+<section class="app-main">
+  <transition name="fade" mode="out-in">
     <!-- 路由出口 -->
     <router-view></router-view>
 

@@ -5,6 +5,9 @@ import Vue from 'vue';
 // 引入elementui
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+import '@/styles/base.scss';
+
 Vue.use(ElementUI)
 
 // 导入axios
