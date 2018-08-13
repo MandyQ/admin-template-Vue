@@ -1,6 +1,6 @@
 <template>
   <div id="login_box">
-    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" method="POST">
       <h3>vue-admin</h3>
       <el-form-item label="用户名" prop="username">
         <span class="icon_box">

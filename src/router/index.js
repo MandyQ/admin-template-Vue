@@ -73,10 +73,6 @@ export const constantRouterMap = [
       }
     ]
   },
-
-
-
-
 ]
 
 // 实例化vue的时候只挂载constantRouterMap

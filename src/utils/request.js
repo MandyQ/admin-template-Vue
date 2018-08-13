@@ -10,9 +10,11 @@ var service = axios.create({
 //拦截器：在请求或响应被 then 或 catch 处理前拦截它们
 //请求拦截器
 axios.interceptors.request.use(config => {
+  console.log(config,'--------------')
   if(store.getters.token) {
     config.headers['x-Token'] = getToken()  //让请求携带自定义token
   }
+  console.log(config,'--------------')
   return config;
 },error => {
   console.log(error)
@@ -51,7 +53,6 @@ axios.interceptors.response.use(res => {
     )
   }
 })
-
 export default service
 
 

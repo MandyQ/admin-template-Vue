@@ -2,14 +2,21 @@ import request from '@/utils/request'
 
 export function login(username, password) {
   return request({
-    url:'/login',
+    url:'/user/login',
     methods:'get',
     data:{
       username:username,
       password:password
-    }
+    },
   })
 }
+
+  // export function login(username,password) {
+  //   return axios.post('/user/login', {
+  //     username:username,
+  //     password:password
+  //   })
+  // }
 
   export function getInfo(username) {
     return request({

@@ -26,13 +26,12 @@ const user = {
   actions: {
     Login({commit}, userInfo){
       let username = userInfo.username.trim()
-      // console.log(username)
-      // console.log(userInfo.pass)
+      console.log(username)
+      console.log(userInfo.password)
       return new Promise((resolve, reject) => {
         login(username, userInfo.pass).then( res => {
-          console.log('test-login')
           const data = res.data
-          console.log(data,11111)  //admin
+          console.log(data)  //admin
           setToken(data.token) //拿到token
           commit('SET_TOKEN', data.token) //触发函数设置(新)token
           resolve()  //成功， 继续往下执行 （参数 在异步操作成功时调用，并将异步操作的结果，作为参数传递出去）

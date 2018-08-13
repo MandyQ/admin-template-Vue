@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="200px">
+    <!-- <el-aside width="200px">
       <Sidebar />
     </el-aside>
     <el-container>
@@ -10,8 +10,23 @@
       <el-main>
         <Appmain />
       </el-main>
+    </el-container> -->
+
+
+    <el-header>Header</el-header>
+    <el-container>
+      <el-aside width="200px">
+        <Sidebar />
+      </el-aside>
+      <el-main>
+         <Navbar />
+        <Appmain />
+
+      </el-main>
     </el-container>
   </el-container>
+
+
 </template>
 
 <script>
