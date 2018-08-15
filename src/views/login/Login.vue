@@ -1,12 +1,15 @@
 <template>
   <div class="login-container">
     <div class="header_title">
-      <div>
-        <!-- <img src="" alt=""> -->
+      <div class="img_box">
+        <!-- <p> -->
+          <img src="../../assets/geoswift-logo-wh-small.png" alt="">
+          <span class="title">System Management Platform</span>
+        <!-- </p> -->
       </div>
     </div>
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
-      <h3 class="title">configuration settings</h3>
+      <!-- <h3 class="title">System Management Platform</h3> -->
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="user" />
@@ -26,10 +29,6 @@
           Sign in
         </el-button>
       </el-form-item>
-      <!-- <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: admin</span>
-      </div> -->
     </el-form>
   </div>
 </template>
@@ -99,7 +98,7 @@ import { isvalidUsername } from '@/utils/validate'
 
 <style rel="stylesheet/scss" lang = "scss">
 $bg:2d3a4b;
-$light_gray:#eee;
+$light_gray:#555;
 /* reset element-ui css */
 .login-container {
   .el-input {
@@ -118,6 +117,7 @@ $light_gray:#eee;
         -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
         -webkit-text-fill-color: #fff !important;
       }
+
     }
   }
   .el-form-item {
@@ -129,7 +129,6 @@ $light_gray:#eee;
       background-color: #f36f21;
       border-color:#f36f21
     }
-
   }
 }
 
@@ -137,17 +136,36 @@ $light_gray:#eee;
 
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-$bg:gray;
 $dark_gray:#889aa4;
 $light_gray:#eee;
+
 .login-container {
   position: fixed;
   height: 100%;
   width: 100%;
-  background-color: $bg;
+   background: url(../../assets/login-bg-2.jpg) no-repeat center center fixed;
+   background-size:cover;
   .header_title{
     height: 60px;
     background-color:#ff6600;
+    position: relative;
+    .img_box {
+      margin-left:8%;
+      position: absolute;
+      top:50%;
+      transform:translateY(-50%);
+      line-height:60px;
+      img{
+        vertical-align:middle;
+      }
+      .title {
+        font-size: 26px;
+        color: #fff;
+        margin: 0px auto 40px auto;
+        text-align: center;
+        vertical-align:middle;
+      }
+    }
   }
   .login-form {
     position: absolute;
@@ -156,17 +174,11 @@ $light_gray:#eee;
     width: 520px;
     padding: 35px 35px 15px 35px;
     margin: 120px auto;
+    background-color:#eee;
+    opacity: 0.7;
+    border-radius:5px;
   }
-  // .tips {
-  //   font-size: 14px;
-  //   color: #fff;
-  //   margin-bottom: 10px;
-  //   span {
-  //     &:first-of-type {
-  //       margin-right: 16px;
-  //     }
-  //   }
-  // }
+
   .svg-container {
     padding: 6px 5px 6px 15px;
     color: $dark_gray;
@@ -177,14 +189,7 @@ $light_gray:#eee;
       font-size: 20px;
     }
   }
-  .title {
-    font-size: 26px;
-    font-weight: 400;
-    color: $light_gray;
-    margin: 0px auto 40px auto;
-    text-align: center;
-    font-weight: bold;
-  }
+
   .show-pwd {
     position: absolute;
     right: 10px;
@@ -195,6 +200,5 @@ $light_gray:#eee;
     user-select: none;
   }
 }
-
 </style>
 

@@ -9,7 +9,7 @@ import Login from '@/views/login/Login';
 import Dashboard from '@/views/dashboard';
 import Table from '@/views/table';
 import Tree from '@/views/tree';
-import Form from '@/views/form';
+import Integration from '@/views/integration';
 import Errpage from '@/views/404';
 
 Vue.use(Router);
@@ -20,8 +20,6 @@ Vue.use(Router);
 export const constantRouterMap = [
   { path: '/login', component: Login },
   { path: '/404', component: Errpage },
-
-  { path: '*', redirect: '/404' },
 
   {
     path: '/',
@@ -35,7 +33,7 @@ export const constantRouterMap = [
         path: 'dashboard',
         name: 'Dashboard',
         component: Dashboard,
-        // meta: {title: 'Dashboard'}
+        meta: {title: 'Dashboard',icon:'dashboard'}
       }
     ]
   },
@@ -61,21 +59,30 @@ export const constantRouterMap = [
     ]
   },
   {
-    path:'/form',
+    path:'/integration',
     component: Layout,
-    meta: { title: 'Form', icon: 'form' },
+    meta: { title: 'Integration', icon: 'integration' },
     children: [
       {
         path: 'index',
-        component:Form,
-        name:'Form',
-        meta: {title: 'Form', icon:'form'}
+        component:Integration,
+        name:'Integration',
+        meta: {title: 'Integration', icon:'integration'}
       }
     ]
   },
+  { path: '*', redirect: '/404' },
+
 ]
 
 // 实例化vue的时候只挂载constantRouterMap
 export default new Router({
+  scrollBehavior: ()=>({y:0}),
   routes: constantRouterMap,
 });
+
+//异步挂载的路由，
+//动态需要根据权限加载的路由表（此处放在前端，也可以放在后端）
+export const asyncRouterMap = [
+
+]

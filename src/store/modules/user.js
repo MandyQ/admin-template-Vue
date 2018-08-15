@@ -41,7 +41,7 @@ const user = {
       })
     },
     //根据token 获取用户信息的权限信息
-    GetInfo({commit}, state){
+    GetInfo({commit,state} ){
       return new Promise(function(resolve, reject) {
         getInfo(state.token).then( res => {
           if(res.roles && res.roles.length > 0) {//有用户权限信息
@@ -56,7 +56,7 @@ const user = {
       })
     },
     //登出
-    Logout({commit}, state) {
+    Logout({commit, state} ) {
       return new Promise(function(resolve, reject) {
         logout(state.token).then( () => {
           commit('SET_ROLES', [])
@@ -69,13 +69,11 @@ const user = {
       })
     },
     //前端登出
-    FedLogout({commit}, state) {
+    FedLogout({commit}) {
       return new Promise(function(resolve) {
-        logout(state.token).then( () => {
           commit('SET_TOKEN', '')
           removeToken()
           resolve()
-        })
       })
     }
   }

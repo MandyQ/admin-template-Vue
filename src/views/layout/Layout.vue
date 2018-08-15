@@ -47,51 +47,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .app-wrapper {
-//   height: 100%;
-// }
-//   .el-container {
-//     height: 100%;
-//   }
-
-//   .el-header {
-//     /* background-color: #B3C0D1; */
-//     color: #333;
-//     /* text-align: center; */
-//     line-height: 60px;
-//     /* border-bottom:1px solid #B3C0D1; */
-//   }
-
-//   .el-aside {
-//     background-color: rgb(84, 92, 100);
-//     color: #333;
-//     text-align: center;
-//     line-height: 200px;
-//     /* height: 100%; */
-//     padding-top: 20px;
-//   }
-
-//   .el-main {
-//     /* background-color: #E9EEF3; */
-//     color: #333;
-//     text-align: center;
-//     line-height: 160px;
-//     height: 100%;
-//   }
-
-//   body > .el-container {
-//     /* margin-bottom: 40px; */
-//   }
-
-//   .mask-bg{
-//     background: #000;
-//     opacity:0.3;
-//     width:100%;
-//     height:100%;
-//     top:0;
-//     position: absolute;
-//     z-index:999;
-//   }
 
   @import "src/styles/mixin.scss";
   .app-wrapper {

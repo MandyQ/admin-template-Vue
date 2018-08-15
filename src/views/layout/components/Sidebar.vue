@@ -1,5 +1,6 @@
 
 <template>
+<!-- default-active 可解决eleui侧边栏不会跟着路由高亮问题 -->
    <el-scrollbar wrapClass="scrollbar-wrapper">
     <el-menu
       mode="vertical"

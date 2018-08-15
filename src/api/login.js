@@ -29,8 +29,8 @@ export function login(username, password) {
 
   export function logout(username) {
     return request({
-      url:'/logout',
-      methods:'post',
+      url:'/user/logout',
+      methods:'get',
     })
   }
 

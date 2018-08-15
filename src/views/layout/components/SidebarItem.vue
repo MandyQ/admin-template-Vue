@@ -94,7 +94,7 @@ export default {
   methods: {
     hasOneShowingChildren(children) {
       const showingChildren = children.filter(item => {
-        return !item.hidden
+        return !item.hidden  //返回所有显示的item（即有showing Children）
       })
       if (showingChildren.length === 1) {
         return true

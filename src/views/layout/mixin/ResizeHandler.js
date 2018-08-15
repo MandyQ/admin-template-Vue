@@ -36,10 +36,7 @@ export default {
         if( isMobile ) {
           store.dispatch('CloseSideBar', { withoutAnimation : false})
         }
-
-
       }
-
     }
   }
 
