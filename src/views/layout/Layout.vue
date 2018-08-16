@@ -13,7 +13,7 @@
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import Appmain from './components/Appmain';
-import ResizeMixin from './mixin/ResizeHandler'
+import ResizeMixin from './mixin/ResizeHandler';
 
 export default {
   name:'layout',
@@ -35,7 +35,7 @@ export default {
     }
   },
   methods: {
-    clickOutside() {
+    clickOutside() { //点击蒙层，侧边栏收缩
       this.$store.dispatch('CloseSideBar', {withoutAnimation: false})
     }
 

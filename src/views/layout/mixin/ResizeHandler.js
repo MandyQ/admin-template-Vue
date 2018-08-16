@@ -5,8 +5,8 @@ const WIDTH = 1024
 const RATIO = 3
 
 export default {
-  watch: {
-    $route(route) {
+  watch: { //watch中监听的对象默认回掉函数中的参数值就是newVal, oldVal
+    $route() {
       if(this.device === 'mobile' && this.sidebar.opened) {
         store.dispatch('CloseSideBar', { withoutAnimation: false})
       }
@@ -14,7 +14,6 @@ export default {
   },
   beforeMount() {
     window.addEventListener('resize', this.resizeHandler)
-
   },
   mounted() {
     const isMobile = this.isMobile()
@@ -29,7 +28,7 @@ export default {
       return rect.width - RATIO < WIDTH
     },
     resizeHandler() {
-      if(!document.hidden) {
+      if(!document.hidden) {//页面可见
         const isMobile =this.isMobile()
         store.dispatch('ToggleDevice', isMobile ? 'mobile' : 'desktop')
 

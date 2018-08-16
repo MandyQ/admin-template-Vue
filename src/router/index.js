@@ -22,9 +22,9 @@ export const constantRouterMap = [
   { path: '/404', component: Errpage },
 
   {
-    path: '/',
+    path: '', //默认hash模式 在localhost:8080/#/运行，故path这里不加 /
     component: Layout,
-    redirect: '/dashboard',
+    redirect: 'dashboard',
     name: 'Dashboard', // 显示在面包屑导航的名称 (用于keep-alive & router-view缓存)
     // hidden：true,
     meta: { title: 'Dashboard' },
@@ -40,7 +40,7 @@ export const constantRouterMap = [
   {
     path:'/example',
     component:Layout,
-    redirect:'/example/table',
+    redirect:'/example/table',  // '/xx'是根路径
     name:'Example',
     meta: {title: 'Example', icon:'example'},
     children:[

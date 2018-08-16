@@ -82,10 +82,10 @@ export default {
             label: 'B2C',
             children: [{
               value: 'cexiangdaohang',
-              label: '侧向导航'
+              label: '1'
             }, {
               value: 'dingbudaohang',
-              label: '顶部导航'
+              label: '2'
             }]
           }]
         }, {
